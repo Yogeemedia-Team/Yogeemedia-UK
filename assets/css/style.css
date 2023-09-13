@@ -92,7 +92,11 @@ Sidebar heading:  22px 'Manrope', sans-serif
 	--white: #ffffff;
 	--color-primary: #5138ee;
 	--color-secondary: #02ebad;
-	--color-heading: #04000b;
+	/* --color-heading: #04000b; */
+
+	/* changed because of bg-dark */
+	--color-heading: #ffffff;
+
 	--color-paragraph: #666666;
 	--box-shadow-primary: -1px 3px 10px 0 rgba(0, 0, 0, 0.6);
 	--box-shadow-secondary: 0 10px 30px 0 rgba(44, 130, 237, 0.4);
@@ -9199,4 +9203,60 @@ ul.contact-address > li:first-child {
 }
 .cards-area .btn-ch-gr {
     background-image: linear-gradient(to right, #FE4609 , #F6075F);
+}
+
+/* New styles */
+
+/* Homepage */
+.brand-items .item{
+	padding: 0 30px;
+}
+.brand-items .item img{
+	min-width: 300px ;
+}
+.btn-active{
+	background: var(--bg-gradient) !important;
+}
+/* breadcrumb styles */
+.breadcrumb li,
+.breadcrumb li a{
+	color: #fff !important;
+}
+
+/* Footer title */
+.bg-dark .footer-box{
+	border: none !important;
+}
+
+.bg-dark .footer-bottom{
+	border-top: none;
+}
+.bg-dark footer .f-item.about::after{
+	border-right: none;
+}
+
+.accordion-item:last-of-type {
+	border-radius: 0;
+}
+
+.mw-75{
+	max-width: 75%!important;	
+}
+.mw-50{
+	max-width: 50%!important;	
+}
+
+.quotation-model .modal-content{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50% , -50%);
+}
+.quotation-model .pricing-style-one {
+	margin: auto;
+	width: max-content;
+}
+.carousel-control-prev:after,
+.carousel-control-next:after{
+	background-color: #0ff0 !important;
 }
