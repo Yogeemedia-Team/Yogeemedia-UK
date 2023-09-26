@@ -6279,8 +6279,8 @@ ul.list-item li:first-child {
 	grid-column-gap: 60px;
 	align-items: center;
 	border: 1px solid #dddddd;
-	border-top: none;
-	border-bottom: none;
+	/* border-top: none; */
+	/* border-bottom: none; */
 }
 
 .bg-dark .testimonial-style-one {
@@ -9254,9 +9254,19 @@ ul.contact-address > li:first-child {
 }
 .quotation-model .pricing-style-one {
 	margin: auto;
-	width: max-content;
 }
 .carousel-control-prev:after,
 .carousel-control-next:after{
 	background-color: #0ff0 !important;
+}
+@media (min-width: 1000px) {
+	.quotation-model .pricing-style-one {
+		width: max-content;
+	}
+}
+@media (min-width: 576px) {
+	.modal-dialog {
+		max-width: 50%;
+	}
+
 }
