@@ -67,8 +67,8 @@
     ============================================= -->
     <header>
         <!-- Start Navigation -->
-        <nav
-            class="navbar navbar-common mobile-sidenav navbar-sticky navbar-default validnavs navbar-fixed dark no-background">
+        <nav class="navbar mobile-sidenav navbar-sticky navbar-default validnavs navbar-fixed no-background">
+
 
             <div class="container d-flex justify-content-between align-items-center">
 
@@ -79,7 +79,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="index.html">
-                        <img src="assets/img/logo.png" class="logo" alt="Logo">
+                        <img src="assets/img/logo-light.png" class="logo" alt="Logo">
                     </a>
                 </div>
                 <!-- End Header Navigation -->
@@ -87,26 +87,27 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
 
-                    <img src="assets/img/logo.png" alt="Logo">
+                    <img src="assets/img/logo-light.png" alt="Logo">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-times"></i>
                     </button>
 
                     <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="index.html#pricing">Prices</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
                         <li><a href="contact-us.html">Contact Us</a></li>
-                        <!-- <li class="dropdown">
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <ul class="dropdown-menu">
-                                <li><a href="projects.html">Projects</a></li>
-                                
-                                
+
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="portfolio.html">Portfolio</a></li>
+                                <li><a href="services.html">Services</a></li>
                                 <li><a href="404.html">Error Page</a></li>
                             </ul>
-                        </li> -->
+                        </li>
+                        <li><a href="services-details.html">Single Service</a></li>
+                        <li><a href="blog-single-with-sidebar.html">Blog Single</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
 
@@ -114,20 +115,82 @@
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav flex">
                         <ul>
-                            <li class="contact">
-                                <div class="call">
-                                    <div class="icon">
-                                        <i class="fas fa-comments-alt-dollar"></i>
-                                    </div>
-                                    <div class="info">
-                                        <p>Have any Questions?</p>
-                                        <h5><a href="mailto:info@crysta.com">info@atozen.com</a></h5>
-                                    </div>
-                                </div>
+                            <li class="side-menu">
+                                <a href="#">
+                                    <span class="bar-1"></span>
+                                    <span class="bar-2"></span>
+                                    <span class="bar-3"></span>
+                                </a>
                             </li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
+
+
+                    <!-- Start Side Menu -->
+                    <div class="side">
+                        <a href="#" class="close-side"><i class="fas fa-times"></i></a>
+                        <div class="widget">
+                            <div class="logo">
+                                <img src="assets/img/logo-light.png" alt="Logo">
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <p>
+                                Digital marketing is the component of marketing that uses the Internet and online based
+                                digital technologies such as desktop computers, mobile phones and other digital media
+                                and platforms to promote products and services.
+                            </p>
+                        </div>
+                        <div class="widget address">
+                            <div>
+                                <ul>
+                                    <li>
+                                        <div class="content">
+                                            <p>Address</p>
+                                            <strong>California, TX 70240</strong>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="content">
+                                            <p>Email</p>
+                                            <strong>support@validtheme.com</strong>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="content">
+                                            <p>Contact</p>
+                                            <strong>+44-20-7328-4499</strong>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="widget newsletter">
+                            <h4 class="title">Get Subscribed!</h4>
+                            <form action="#">
+                                <div class="input-group stylish-input-group">
+                                    <input type="email" placeholder="Enter your e-mail" class="form-control"
+                                        name="email">
+                                    <span class="input-group-addon">
+                                        <button type="submit">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="widget social">
+                            <ul class="link">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- End Side Menu -->
 
                 </div>
                 <!-- Main Nav -->
@@ -142,101 +205,128 @@
     <!-- End Header -->
 
 
-    <!-- Start Breadcrumb 
+    <!-- Start Slide Section 
     ============================================= -->
-    <div class="breadcrumb-area bg-gray">
-        <div class="container">
-            <div class="breadcrumb-item">
-                <div class="breadcrum-shape">
-                    <img src="assets/img/shape/bg-shape-3.png" alt="shape">
-                </div>
-                <div class="row">
-                    <div class="col-lg-8">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                                <li class="active">Service</li>
-                            </ol>
-                        </nav>
-                        <h1>Turn Information <br> Into Actionable Insights</h1>
-                    </div>
-                </div>
-            </div>
+    <div class="multi-section overflow-hidden bg-dark-secondary text-light">
+        <div class="bg-shape-top">
+            <img src="assets/img/shape/bg-shape-1.png" alt="Image Not Found">
         </div>
-    </div>
-    <!-- End Breadcrumb -->
 
-    <!-- Star Services Details Area
-    ============================================= -->
-    <div class="services-details-area default-padding">
-        <div class="container">
-            <div class="services-details-items">
-                <div class="row">
+        <div class="thecontainer">
 
-                    <div class="col-xl-8 col-lg-7 pr-45 pr-md-15 pr-xs-15 services-single-content">
-                        <div class="service-single-thumb">
-                            <img src="assets/img/1500x800.png" alt="Thumb">
+            <!-- Single Section -->
+            <div class="panel overflow-hidden">
+                <div class="container overflow-hidden">
+                    <div class="row align-center">
+                        <div class="col-lg-4">
+                            <div class="site-title">
+                                <h4 class="sub-title">Award & Achivement </h4>
+                                <h2 class="title">Awards & Recognitions</h2>
+                            </div>
                         </div>
-                        <h2>Best influencer marketing services</h2>
-                        <p>
-                            We denounce with righteous indige nation and dislike men who are so beguiled and demo
-                            realized by the charms of pleasure of the moment, so blinded by desire, that they cannot
-                            foresee the pain and trouble that are bound to ensue cannot foresee. These cases are
-                            perfectly simple and easy to distinguish. In a free hour, when our power of choice is
-                            untrammelled data structures manages data in technology.
-                        </p>
-                        <div class="features mt-40 mt-xs-30">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-6">
-                                    <div class="content">
-                                        <h3>Included Services</h3>
-                                        <ul class="feature-list-item">
-                                            <li>Monthly SEO Task</li>
-                                            <li>24/7 Alltime Supporting</li>
-                                            <li>Turbo Boosting</li>
-                                            <li>Expert Team Members</li>
-                                        </ul>
+                        <div class="col-lg-7 offset-lg-1">
+                            <div class="achivement-items">
+                                <div class="achivement-grid">
+                                    <div class="achivement-item">
+                                        <i class="fab fa-behance"></i>
+                                        <h4>Behance Awards </h4>
+                                    </div>
+                                    <div class="achivement-item">
+                                        <i class="fas fa-layer-group"></i>
+                                        <h4>Design Awards</h4>
                                     </div>
                                 </div>
-                                <div class="col-lg-7 col-md-6 mt-xs-30">
-                                    <div class="content">
-                                        <h3>The Challange</h3>
-                                        <p>
-                                            Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
-                                            saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
-                                            Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-                                            voluptatibus maiores alias. consequatur aut perferendis doloribus.
-                                        </p>
+                                <div class="achivement-grid">
+                                    <div class="achivement-item">
+                                        <i class="fab fa-laravel"></i>
+                                        <h4>Programming Awards</h4>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-xl-4 col-lg-5 mt-md-50 mt-xs-50 pl-30 pl-md-15 pl-xs-15 services-sidebar">
-                        <!-- Single Widget -->
-                        <div class="single-widget services-list-widget">
-                            <h4 class="widget-title">Services</h4>
-                            <ul>
-                                <li><a href="services-details.html"> Brand Creation <i
-                                            class="fas fa-arrow-right"></i></a></li>
-                                <li class="current-item"><a href="services-details.html"> Web Campaigns <i
-                                            class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="services-details.html">Creative Strategy <i
-                                            class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="services-details.html">Brand strategy <i
-                                            class="fas fa-arrow-right"></i></a></li>
-                                <li><a href="services-details.html">Components developing <i
-                                            class="fas fa-arrow-right"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
                 </div>
             </div>
+            <!-- End Single Section -->
+
+            <!-- Single Section -->
+            <div class="panel overflow-hidden bg-gradient">
+                <div class="container overflow-hidden">
+                    <div class="expertise-area text-center">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="site-title">
+                                    <h4 class="sub-title">Our Expertise </h4>
+                                    <h2 class="title">Best solutions provider</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="achivement-skill-items">
+                                    <!-- Progress Bar Start -->
+                                    <div class="progress-box">
+                                        <h5>Programming Language</h5>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" data-width="79">
+                                                <span>79%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-box">
+                                        <h5>Backend Development</h5>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" data-width="95">
+                                                <span>95%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-box">
+                                        <h5>Product Design</h5>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" data-width="80">
+                                                <span>80%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Progressbar -->
+                                    <div class="progress-box">
+                                        <h5>UI/UX</h5>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" data-width="67">
+                                                <span>67%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Progressbar -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Single Section -->
+
+            <!-- Single Section -->
+            <div class="panel contact-panel overflow-hidden">
+                <div class="contact-panel-bg" style="background-image: url(assets/img/800x1000.png);"></div>
+                <div class="container overflow-hidden">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4 class="sub-title">Have you project in mind?</h4>
+                            <h2 class="title">For instant support please reach us</h2>
+                            <a class="btn-round-animation dark mt-40" href="contact-us.html">Send Mail <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Single Section -->
+
         </div>
     </div>
-    <!-- End Services Details Area -->
+    <!-- End Slide Section -->
+
 
     <!-- Start Footer 
     ============================================= -->
@@ -248,7 +338,7 @@
                         <!-- Singel Item -->
                         <div class="col-lg-3 col-md-6 footer-item mt-50">
                             <div class="f-item about pr-50 pr-xs-0 pr-md-0">
-                                <img class="logo" src="assets/img/logo.png" alt="Logo">
+                                <img class="logo" src="assets/img/logo-light.png" alt="Logo">
                                 <p>
                                     Are off under folly death writter transforming cold regular. Almost do am or limits
                                     of hearts.
@@ -359,6 +449,7 @@
     <script src="assets/js/validnavs.js"></script>
     <script src="assets/js/gsap.js"></script>
     <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/horizontal-scroll.js"></script>
     <script src="assets/js/main.js"></script>
 
 </body>
