@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all single posts
  *
@@ -10,31 +11,50 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<!-- Start Breadcrumb 
+    ============================================= -->
+<div class="breadcrumb-area bg-gray">
+	<div class="container">
+		<div class="breadcrumb-item">
+			<div class="breadcrum-shape">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/bg-shape-3.png" alt="shape">
+			</div>
+			<div class="row">
+				<div class="col-lg-8">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+							<li class="active"><?php the_title(); ?></li>
+						</ol>
+					</nav>
+					<h1><?php the_title(); ?></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Breadcrumb -->
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
 
-			get_template_part( 'template-parts/content', get_post_type() );
+<!-- Start Blog
+    ============================================= -->
+<div class="blog-area single full-blog right-sidebar full-blog default-padding">
+	<div class="container">
+		<div class="blog-items">
+			<div class="row">
+				<?php
+				while (have_posts()) :
+					the_post();
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'yogeemedia-uk' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'yogeemedia-uk' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
-	</main><!-- #main -->
+					get_template_part('template-parts/content', get_post_type());
+					get_sidebar();
+				endwhile; // End of the loop.
+				?>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Blog -->
 
 <?php
-get_sidebar();
 get_footer();
