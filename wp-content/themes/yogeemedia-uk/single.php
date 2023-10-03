@@ -42,15 +42,22 @@ get_header();
 	<div class="container">
 		<div class="blog-items">
 			<div class="row">
-				<?php
-				while (have_posts()) :
-					the_post();
+				<div class="blog-content col-xl-8 col-lg-7 col-md-12 pr-35 pr-md-15 pl-md-15 pr-xs-15 pl-xs-15">
 
-					get_template_part('template-parts/content', get_post_type());
-					get_sidebar();
-				endwhile; // End of the loop.
+					<?php
+					while (have_posts()) :
+						the_post();
+
+						get_template_part('template-parts/content', get_post_type());
+
+					endwhile; // End of the loop.
+					?>
+				</div>
+				<?php
+				get_sidebar();
 				?>
 			</div>
+
 		</div>
 	</div>
 </div>

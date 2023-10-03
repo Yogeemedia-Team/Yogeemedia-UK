@@ -9259,6 +9259,30 @@ ul.contact-address > li:first-child {
 .carousel-control-next:after{
 	background-color: #0ff0 !important;
 }
+
+/* search page styles */
+.search-area .search-form .search-field{
+	padding: 0 20px;
+}
+.search-area .search-form .search-submit{
+	padding: 0 20px;
+	color: #fff;
+	background-color: #097DAE;
+	border-color: #097DAE;
+}
+.search-area .entry-meta{
+	margin-bottom: 15px;
+}
+.search-area .entry-summary{
+margin-top: 15px;
+}
+.search-area .post-thumbnail img{
+	border-radius: 10px;
+}
+.search-area footer{
+	width: 100%;
+}
+/* mediaquery */
 @media (min-width: 1000px) {
 	.quotation-model .pricing-style-one {
 		width: max-content;
