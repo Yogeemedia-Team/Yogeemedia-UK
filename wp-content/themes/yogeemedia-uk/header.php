@@ -164,8 +164,9 @@
 						</div>
 						<div class="widget newsletter">
 							<h4 class="title">Get Subscribed!</h4>
-							<form action="#">
+							<form action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 								<div class="input-group stylish-input-group">
+								<input type="hidden" name="action" value="process_email_form">
 									<input type="email" placeholder="Enter your e-mail" class="form-control" name="email">
 									<span class="input-group-addon">
 										<button type="submit">

@@ -240,3 +240,28 @@ function custom_excerpt_length($length) {
 
 // Hook the function to the excerpt_length filter
 add_filter('excerpt_length', 'custom_excerpt_length');
+
+
+// Hook into the init action and process the form submission
+add_action('init', 'process_email_form_submission');
+
+function process_email_form_submission() {
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['email'])) {
+        $email = sanitize_email($_POST['email']);
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            wp_die('Invalid email address');
+        }
+
+        // Send email to admin
+        $admin_email = get_option('admin_email');
+        $subject = 'New Form Submission';
+        $message = "A new email has been submitted:\n\nEmail: $email";
+
+        wp_mail($admin_email, $subject, $message);
+
+        // Optionally, redirect the user after processing the form
+        wp_redirect(home_url('/')); // Replace with the actual URL you want to redirect to
+        exit();
+    }
+}

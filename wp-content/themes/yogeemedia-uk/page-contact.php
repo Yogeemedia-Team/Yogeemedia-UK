@@ -66,15 +66,22 @@ get_header();
                         <li>
                             <div class="info">
                                 <ul class="social-link">
-                                    <li>
-                                        <a class="facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                    </li>
-                                    <li>
-                                        <a class="twitter" href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a class="linkedin" href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                    </li>
+
+                                <?php
+
+									// Check rows existexists.
+									if (have_rows('socialmedia', 'option')) :
+
+										// Loop through rows.
+										while (have_rows('socialmedia', 'option')) : the_row();
+									?>
+											<li><a target="_blank" href="<?php the_sub_field('link'); ?>"><i class="<?php the_sub_field('icon'); ?>"></i></a></li>
+
+									<?php
+										// End loop.
+										endwhile;
+									endif;
+									?>
                                 </ul>
                             </div>
                         </li>
@@ -83,51 +90,10 @@ get_header();
             </div>
 
             <div class="col-tact-stye-one col-lg-7 pl-60 pl-md-15 pl-xs-15 mt-md-50 mt-xs-50">
-                <div class="contact-form-style-one">
+                <div class="contact-form contact-form-style-one">
                     <h4 class="sub-title">Have Questions?</h4>
                     <h2 class="title">Send us a Massage</h2>
-                    <form action="<?php echo get_template_directory_uri(); ?>/assets/mail/contact.php" method="POST" class="contact-form contact-form mt-30">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <input class="form-control" id="name" name="name" placeholder="Name" type="text">
-                                    <span class="alert-error"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input class="form-control" id="email" name="email" placeholder="Email*" type="email">
-                                    <span class="alert-error"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input class="form-control" id="phone" name="phone" placeholder="Phone" type="text">
-                                    <span class="alert-error"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group comments">
-                                    <textarea class="form-control" id="comments" name="comments" placeholder="Tell Us About Project *"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <button type="submit" name="submit" id="submit">
-                                    <i class="fa fa-paper-plane"></i> Get in Touch
-                                </button>
-                            </div>
-                        </div>
-                        <!-- Alert Message -->
-                        <div class="col-lg-12 alert-notification">
-                            <div id="message" class="alert-msg"></div>
-                        </div>
-                    </form>
+                    <?php echo apply_shortcodes( '[contact-form-7 id="a5e1b31" title="Contact form"]' ); ?>
                 </div>
             </div>
 

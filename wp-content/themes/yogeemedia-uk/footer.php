@@ -33,7 +33,7 @@
 							}
 							?>
 							<p class="mt-4">
-							<?php the_field('short_description', 'option'); ?>
+								<?php the_field('short_description', 'option'); ?>
 							</p>
 
 							<div class="footer-social mt-30">
@@ -111,10 +111,16 @@
 							<p>
 								Join our subscribers list to get the instant latest news and special offers.
 							</p>
-							<form action="#">
+							<!-- <form action="#">
 								<input type="email" placeholder="Your Email" class="form-control" name="email">
 								<button type="submit"><i class="fas fa-arrow-right"></i></button>
+							</form> -->
+							<form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post">
+								<input type="hidden" name="action" value="process_email_form">
+									<input type="email" placeholder="Your Email" class="form-control" name="email" required>
+								<button type="submit"><i class="fas fa-arrow-right"></i></button>
 							</form>
+
 						</div>
 					</div>
 					<!-- End Singel Item -->
@@ -130,7 +136,9 @@
 				<div class="row">
 					<div class="col-lg-9 offset-lg-3">
 						<p>
-							Copyright &copy; <script>document.write(new Date().getFullYear())</script> <?php echo get_bloginfo('name');?>. All Rights Reserved
+							Copyright &copy; <script>
+								document.write(new Date().getFullYear())
+							</script> <?php echo get_bloginfo('name'); ?>. All Rights Reserved
 						</p>
 					</div>
 				</div>

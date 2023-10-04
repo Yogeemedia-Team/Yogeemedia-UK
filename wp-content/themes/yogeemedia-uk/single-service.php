@@ -43,9 +43,15 @@ get_header();
                             <?php echo get_the_post_thumbnail(get_the_ID(), 'full', array('class' => 'img-fluid w-100', 'alt' => get_the_title())); ?>
                         <?php endif; ?>
                     </div>
-                    <h2>Best influencer marketing services</h2>
+                    <?php
+                    if (get_field('subtitle')) :
+                    ?>
+                        <h2><?php the_field('subtitle'); ?></h2>
+                    <?php
+                    endif;
+                    ?>
                     <p>
-                    <?php the_content(); ?>
+                        <?php the_content(); ?>
                     </p>
                     <div class="features mt-40 mt-xs-30">
                         <div class="row">
@@ -53,24 +59,33 @@ get_header();
                                 <div class="content">
                                     <h3>Included Services</h3>
                                     <ul class="feature-list-item">
-                                        <li>Monthly SEO Task</li>
-                                        <li>24/7 Alltime Supporting</li>
-                                        <li>Turbo Boosting</li>
-                                        <li>Expert Team Members</li>
+                                        <?php
+                                        // Check rows existexists.
+                                        if (have_rows('included_services')) :
+                                            // Loop through rows.
+                                            while (have_rows('included_services')) : the_row();
+                                        ?>
+                                                <li><?php the_sub_field('service'); ?></li>
+                                        <?php
+                                            // End loop.
+                                            endwhile;
+                                        endif;
+                                        ?>
                                     </ul>
                                 </div>
                             </div>
+                            <?php if(get_field('the_challange')) :
+                            ?>
                             <div class="col-lg-7 col-md-6 mt-xs-30">
                                 <div class="content">
                                     <h3>The Challange</h3>
                                     <p>
-                                        Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
-                                        saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
-                                        Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-                                        voluptatibus maiores alias. consequatur aut perferendis doloribus.
+                                        <?php the_field('the_challange'); ?>
                                     </p>
                                 </div>
                             </div>
+                            <?php endif;
+                            ?>
                         </div>
                     </div>
                 </div>
