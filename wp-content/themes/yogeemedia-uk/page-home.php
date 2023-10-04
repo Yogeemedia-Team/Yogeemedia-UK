@@ -55,181 +55,72 @@ get_header();
                 <div class="service-hover-items">
 
                     <ul>
-                        <li>
-                            <a href="services-details.html" class="service-hover-item">
-                                <div class="service-hover-content">
-                                    <div class="icon">
-                                        <i class="fas fa-vector-square"></i>
-                                    </div>
-                                    <div class="item-title">
-                                        <h2>Website Design & Development</h2>
-                                        <span>01</span>
-                                    </div>
-                                    <div class="details">
-                                        <p>Our in-house web design team elevates your digital presence. We cover
-                                            business websites, e-commerce, brochures, and revamps.we collaborate
-                                            closely to bring your vision to life.</p>
-                                        <ul>
-                                            <li>Digital Presence Enhancement</li>
-                                            <li>Visionary Collaboration Approach
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="arrow">
-                                        <strong class="btn-animation"><i class="fas fa-arrow-right"></i> <span>View
-                                                More</span></strong>
-                                    </div>
-                                </div>
-                            </a>
+                        <?php
+                        // WP Query to fetch services
+                        $args = array(
+                            'post_type' => 'service', // Assuming 'services' is the name of your custom post type
+                            'posts_per_page' => 3,    // Show all posts
+                        );
 
-                        </li>
-                        <li>
-                            <a href="services-details.html" class="service-hover-item">
-                                <div class="service-hover-content">
-                                    <div class="icon">
-                                        <i class="fas fa-layer-group"></i>
-                                    </div>
-                                    <div class="item-title">
-                                        <h2>Search Engine Optimisation.</h2>
-                                        <span>02</span>
-                                    </div>
-                                    <div class="details">
-                                        <p>
-                                            Our SEO experts use industry-standard methods like link building,
-                                            inbound marketing, and on-page SEO to elevate your digital presence.
-                                            Unleash your online potential with our limitless creative expertise.
-                                        </p>
-                                        <ul>
-                                            <li>Creative Expertise</li>
-                                            <li>Proven SEO Strategies</li>
-                                        </ul>
-                                    </div>
-                                    <div class="arrow">
-                                        <strong class="btn-animation"><i class="fas fa-arrow-right"></i> <span>View
-                                                More</span></strong>
-                                    </div>
-                                </div>
-                            </a>
+                        $services_query = new WP_Query($args);
 
-                        </li>
-                        <li>
-                            <a href="services-details.html" class="service-hover-item">
-                                <div class="service-hover-content">
-                                    <div class="icon">
-                                        <i class="fas fa-bullseye-pointer"></i>
-                                    </div>
-                                    <div class="item-title">
-                                        <h2>Ecommerce Website Design.</h2>
-                                        <span>03</span>
-                                    </div>
-                                    <div class="details">
-                                        <p>
-                                            Embark on your online selling journey with us! We craft dynamic
-                                            e-commerce solutions for businesses of all sizes. Our meticulously
-                                            designed websites provide effortless store control. Join us for seamless
-                                            selling.
-                                        </p>
-                                        <ul>
-                                            <li>Seamless E-commerce Solutions</li>
-                                            <li>Effortless Store Control</li>
-                                        </ul>
-                                    </div>
-                                    <div class="arrow">
-                                        <strong class="btn-animation"><i class="fas fa-arrow-right"></i> <span>View
-                                                More</span></strong>
-                                    </div>
-                                </div>
-                            </a>
+                        $counter = 1; // Initialize a counter for incrementing
 
-                        </li>
-                        <li>
-                            <a href="services-details.html" class="service-hover-item">
-                                <div class="service-hover-content">
-                                    <div class="icon">
-                                        <i class="fas fa-bullseye-pointer"></i>
-                                    </div>
-                                    <div class="item-title">
-                                        <h2>Web Systems</h2>
-                                        <span>04</span>
-                                    </div>
-                                    <div class="details">
-                                        <p>
-                                            Streamline Business Processes with Dynamic Web Solutions. User-Friendly
-                                            CMS, Robust CRM. Tailored Systems for Unique Needs. Expertly Designed,
-                                            Meticulously Developed. Discover Seamless Control and Optimal
-                                            Visibility.
-                                        </p>
-                                        <ul>
-                                            <li>Streamlined Business Processes</li>
-                                            <li>Effortless Web Solutions</li>
-                                        </ul>
-                                    </div>
-                                    <div class="arrow">
-                                        <strong class="btn-animation"><i class="fas fa-arrow-right"></i> <span>View
-                                                More</span></strong>
-                                    </div>
-                                </div>
-                            </a>
+                        // Loop through services
+                        while ($services_query->have_posts()) :
+                            $services_query->the_post();
+                        ?>
+                            <li>
+                                <a href="<?php the_permalink(); ?>" class="service-hover-item">
+                                    <div class="service-hover-content">
+                                        <div class="icon">
+                                            <?php
+                                            // Display service icon/image if available
+                                            $service_icon_url = get_field('service_icon'); // Assuming 'service_icon' is the name of the custom field for the icon
+                                            if ($service_icon_url) {
+                                            ?>
+                                                <img src="<?php echo esc_url($service_icon_url); ?>" alt="Icon">
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
+                                        <div class="item-title">
+                                            <h2><?php the_title(); ?></h2>
+                                            <span><?php echo str_pad($counter, 2, '0', STR_PAD_LEFT); ?></span>
+                                        </div>
+                                        <div class="details">
+                                            <p><?php the_excerpt(); ?></p>
+                                            <ul>
+                                                <?php
 
-                        </li>
-                        <li>
-                            <a href="services-details.html" class="service-hover-item">
-                                <div class="service-hover-content">
-                                    <div class="icon">
-                                        <i class="fas fa-bullseye-pointer"></i>
-                                    </div>
-                                    <div class="item-title">
-                                        <h2>Mobile Apps</h2>
-                                        <span>05</span>
-                                    </div>
-                                    <div class="details">
-                                        <p>
-                                            Mobile App Development Experts. User-Friendly Applications. Customized
-                                            Solutions. Expert Design, Meticulous Development. Superior Visibility,
-                                            Seamless Experiences. Discover Mobile Excellence with Us.
-                                        </p>
-                                        <ul>
-                                            <li>Custom Mobile Solutions</li>
-                                            <li>Expert App Development</li>
-                                        </ul>
-                                    </div>
-                                    <div class="arrow">
-                                        <strong class="btn-animation"><i class="fas fa-arrow-right"></i> <span>View
-                                                More</span></strong>
-                                    </div>
-                                </div>
-                            </a>
+                                                // check if the repeater field has rows of data
+                                                if (have_rows('homepage_points')) :
 
-                        </li>
-                        <li>
-                            <a href="services-details.html" class="service-hover-item">
-                                <div class="service-hover-content">
-                                    <div class="icon">
-                                        <i class="fas fa-bullseye-pointer"></i>
-                                    </div>
-                                    <div class="item-title">
-                                        <h2>Web Design Services</h2>
-                                        <span>06</span>
-                                    </div>
-                                    <div class="details">
-                                        <p>
-                                            Your Comprehensive Web Development Solution. From Simple Websites to
-                                            Custom Platforms and Extensive Corporate Redesigns, We've Got You
-                                            Covered. A Wide Range of Services for Your Needs.
-                                        </p>
-                                        <ul>
-                                            <li>Comprehensive Web Solutions</li>
-                                            <li>Diverse Service Offerings</li>
-                                        </ul>
-                                    </div>
-                                    <div class="arrow">
-                                        <strong class="btn-animation"><i class="fas fa-arrow-right"></i> <span>View
-                                                More</span></strong>
-                                    </div>
-                                </div>
-                            </a>
+                                                    // loop through the rows of data
+                                                    while (have_rows('homepage_points')) : the_row();
+                                                ?>
+                                                        <li><?php the_sub_field('point'); ?></li>
+                                                <?php
+                                                    endwhile;
 
-                        </li>
+                                                endif;
+
+                                                ?>
+                                            </ul>
+                                        </div>
+                                        <div class="arrow">
+                                            <strong class="btn-animation"><i class="fas fa-arrow-right"></i> <span>View
+                                                    More</span></strong>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </li>
+                        <?php
+                            $counter++; // Increment the counter
+                        endwhile;
+                        wp_reset_postdata(); // Reset the query to the main loop
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -651,102 +542,49 @@ get_header();
                     <div class="project-center-stage-carousel swiper">
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
-                            <!-- Single Item -->
-                            <div class="swiper-slide">
-                                <div class="project-style-one">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/800x600.png" alt="Thumb">
-                                    <div class="overlay">
-                                        <div class="link">
-                                            <a href="projects.html"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                        <div class="content">
-                                            <span>Marketing</span>
-                                            <h4><a href="projects.html">Digital Marketing</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="swiper-slide">
-                                <div class="project-style-one">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/800x600.png" alt="Thumb">
-                                    <div class="overlay">
-                                        <div class="link">
-                                            <a href="projects.html"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                        <div class="content">
-                                            <span>Promotion</span>
-                                            <h4><a href="projects.html">Data Scientist</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="swiper-slide">
-                                <div class="project-style-one">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/800x600.png" alt="Thumb">
-                                    <div class="overlay">
-                                        <div class="link">
-                                            <a href="projects.html"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                        <div class="content">
-                                            <span>Development</span>
-                                            <h4><a href="projects.html">Benefits Research</a></h4>
+                            <?php
+                            // WP Query to fetch projects
+                            $args = array(
+                                'post_type' => 'projects', // Assuming 'projects' is the name of your custom post type
+                                'posts_per_page' => -1, // Adjust the number of projects to display
+                            );
+
+                            $project_query = new WP_Query($args);
+
+                            // Loop through projects
+                            while ($project_query->have_posts()) :
+                                $project_query->the_post();
+
+                                // Get all categories for the current project
+                                $categories = get_the_category();
+                            ?>
+
+                                <!-- Single Item -->
+                                <div class="swiper-slide">
+                                    <div class="project-style-one">
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title_attribute(); ?>">
+                                        <?php else : ?>
+                                            <!-- Default Image if no thumbnail -->
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/800x800.png" alt="Image Not Found">
+                                        <?php endif; ?>
+                                        <div class="overlay">
+                                            <div class="link">
+                                                <a href="<?php the_permalink(); ?>"><i class="fas fa-arrow-right"></i></a>
+                                            </div>
+                                            <div class="content">
+                                                <span><?php the_category()?></span>
+                                                <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="swiper-slide">
-                                <div class="project-style-one">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/800x600.png" alt="Thumb">
-                                    <div class="overlay">
-                                        <div class="link">
-                                            <a href="projects.html"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                        <div class="content">
-                                            <span>Research</span>
-                                            <h4><a href="projects.html">Content Optimization</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="swiper-slide">
-                                <div class="project-style-one">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/800x600.png" alt="Thumb">
-                                    <div class="overlay">
-                                        <div class="link">
-                                            <a href="projects.html"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                        <div class="content">
-                                            <span>Marketing</span>
-                                            <h4><a href="projects.html">Digital Marketing</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
-                            <div class="swiper-slide">
-                                <div class="project-style-one">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/800x600.png" alt="Thumb">
-                                    <div class="overlay">
-                                        <div class="link">
-                                            <a href="projects.html"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                        <div class="content">
-                                            <span>Digital</span>
-                                            <h4><a href="projects.html">Development Agency</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Item -->
+                                <!-- End Single Item -->
+
+                            <?php
+                            endwhile;
+                            wp_reset_postdata(); // Reset the query to the main loop
+                            ?>
                         </div>
 
                     </div>

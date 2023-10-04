@@ -31,9 +31,15 @@ get_header();
     ============================================= -->
 <div class="contact-area contact-page overflow-hidden default-padding">
     <div class="container">
-        <div class="map default-padding-bottom">
-            <iframe style="filter: invert(93.5%)" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.307210086189!2d79.99224377612836!3d7.090342716314407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fbed59abfe0b%3A0x156c4d8153c22b78!2sYogee%20Media%20(Pvt)%20Ltd.!5e0!3m2!1sen!2slk!4v1695284265898!5m2!1sen!2slk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+        <?php
+        if (get_field('location', 'option')) :
+        ?>
+            <div class="map default-padding-bottom">
+                <iframe style="filter: invert(93.5%)" src="<?php the_field('location', 'option'); ?>" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        <?php
+        endif;
+        ?>
         <div class="row">
 
 
@@ -41,20 +47,20 @@ get_header();
                 <div class="contact-style-one-info">
                     <ul class="contact-address bg-dark text-light" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/shape/globe.png);">
                         <li>
-                            <a class="phone-link" href="tel:+4733378901">+4733378901</a>
+                            <a class="phone-link" href="tel:<?php the_field('phone', 'option'); ?>"><?php the_field('phone', 'option'); ?></a>
                         </li>
                         <li>
                             <div class="info">
                                 <h4>Location</h4>
                                 <p>
-                                    55 Main Street, The Grand Avenue <br> 2nd Block, New York City
+                                    <?php the_field('address', 'option'); ?>
                                 </p>
                             </div>
                         </li>
                         <li>
                             <div class="info">
                                 <h4>Official Email</h4>
-                                <a href="mailto:info@digital.com.com">info@digital.com</a>
+                                <a href="mailto:<?php the_field('email', 'option'); ?>"><?php the_field('email', 'option'); ?></a>
                             </div>
                         </li>
                         <li>

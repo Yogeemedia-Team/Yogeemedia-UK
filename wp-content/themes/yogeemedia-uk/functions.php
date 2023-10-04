@@ -232,3 +232,11 @@ if( function_exists('acf_add_options_page') ) {
     ));
 
 }
+
+// Function to limit the excerpt length
+function custom_excerpt_length($length) {
+    return 30; // Change 30 to the number of words you want to display
+}
+
+// Hook the function to the excerpt_length filter
+add_filter('excerpt_length', 'custom_excerpt_length');

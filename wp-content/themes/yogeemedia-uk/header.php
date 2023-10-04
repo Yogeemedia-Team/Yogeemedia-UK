@@ -135,9 +135,7 @@
 						</div>
 						<div class="widget">
 							<p>
-								Digital marketing is the component of marketing that uses the Internet and online based
-								digital technologies such as desktop computers, mobile phones and other digital media
-								and platforms to promote products and services.
+							<?php the_field('header_description', 'option'); ?>
 							</p>
 						</div>
 						<div class="widget address">
@@ -146,19 +144,19 @@
 									<li>
 										<div class="content">
 											<p>Address</p>
-											<strong>California, TX 70240</strong>
+											<strong><?php the_field('address', 'option'); ?></strong>
 										</div>
 									</li>
 									<li>
 										<div class="content">
 											<p>Email</p>
-											<strong>support@validtheme.com</strong>
+											<strong><?php the_field('email', 'option'); ?></strong>
 										</div>
 									</li>
 									<li>
 										<div class="content">
 											<p>Contact</p>
-											<strong>+44-20-7328-4499</strong>
+											<strong><?php the_field('phone', 'option'); ?></strong>
 										</div>
 									</li>
 								</ul>
@@ -179,10 +177,21 @@
 						</div>
 						<div class="widget social">
 							<ul class="link">
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								<li><a href="#"><i class="fab fa-behance"></i></a></li>
+								<?php
+
+								// Check rows existexists.
+								if (have_rows('socialmedia', 'option')) :
+
+									// Loop through rows.
+									while (have_rows('socialmedia', 'option')) : the_row();
+								?>
+										<li><a target="_blank" href="<?php the_sub_field('link'); ?>"><i class="<?php the_sub_field('icon'); ?>"></i></a></li>
+
+								<?php
+									// End loop.
+									endwhile;
+								endif;
+								?>
 							</ul>
 						</div>
 

@@ -33,14 +33,26 @@
 							}
 							?>
 							<p class="mt-4">
-								Are off under folly death writter transforming cold regular. Almost do am or limits
-								of hearts.
+							<?php the_field('short_description', 'option'); ?>
 							</p>
+
 							<div class="footer-social mt-30">
 								<ul>
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+									<?php
+
+									// Check rows existexists.
+									if (have_rows('socialmedia', 'option')) :
+
+										// Loop through rows.
+										while (have_rows('socialmedia', 'option')) : the_row();
+									?>
+											<li><a target="_blank" href="<?php the_sub_field('link'); ?>"><i class="<?php the_sub_field('icon'); ?>"></i></a></li>
+
+									<?php
+										// End loop.
+										endwhile;
+									endif;
+									?>
 								</ul>
 							</div>
 						</div>
@@ -72,19 +84,19 @@
 								<li>
 									<div class="content">
 										<strong>Address:</strong>
-										5919 Trussville Crossings Pkwy, Birmingham
+										<?php the_field('address', 'option'); ?>
 									</div>
 								</li>
 								<li>
 									<div class="content">
 										<strong>Email:</strong>
-										<a href="mailto:info@validtheme.com">info@validtheme.com</a>
+										<a href="mailto:<?php the_field('email', 'option'); ?>"><?php the_field('email', 'option'); ?></a>
 									</div>
 								</li>
 								<li>
 									<div class="content">
 										<strong>Phone:</strong>
-										<a href="tel:2151234567">+123 34598768</a>
+										<a href="tel:<?php the_field('phone', 'option'); ?>"><?php the_field('phone', 'option'); ?></a>
 									</div>
 								</li>
 							</ul>
@@ -118,7 +130,7 @@
 				<div class="row">
 					<div class="col-lg-9 offset-lg-3">
 						<p>
-							Copyright &copy; 2023 Avrix. All Rights Reserved
+							Copyright &copy; <script>document.write(new Date().getFullYear())</script> <?php echo get_bloginfo('name');?>. All Rights Reserved
 						</p>
 					</div>
 				</div>
