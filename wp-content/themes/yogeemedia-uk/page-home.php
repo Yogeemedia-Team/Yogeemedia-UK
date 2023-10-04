@@ -166,49 +166,45 @@ get_header();
 </div>
 <!-- End About -->
 
-<!-- Start Brand Area 
+<?php if (get_field('clients')) : ?>
+    <!-- Start Brand Area 
     ============================================= -->
-<div class="brand-area relative default-padding overflow-hidden brand-style-two-area">
-    <div class="brand-style-one py-5">
-        <div class="container-fill">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="brand-items">
-                        <div class="brand-conetnt">
-                            <div class="item">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-light.png" alt="Logo">
+
+    <div class="brand-area relative default-padding overflow-hidden brand-style-two-area">
+        <div class="brand-style-one py-5">
+            <div class="container-fill">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="brand-items">
+                            <div class="brand-conetnt">
+                                <?php
+
+                                // Check rows existexists.
+                                if (have_rows('clients')) :
+
+                                    // Loop through rows.
+                                    while (have_rows('clients')) : the_row();
+                                ?>
+                                        <div class="item">
+                                            <img src="<?php the_sub_field('logo'); ?>" alt="Logo">
+                                        </div>
+
+                                <?php
+                                    // End loop.
+                                    endwhile;
+                                endif;
+                                ?>
+
                             </div>
-                            <div class="item">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-light.png" alt="Logo">
-                            </div>
-                            <div class="item">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-light.png" alt="Logo">
-                            </div>
-                            <div class="item">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-light.png" alt="Logo">
-                            </div>
-                        </div>
-                        <div class="brand-conetnt">
-                            <div class="item">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-light.png" alt="Logo">
-                            </div>
-                            <div class="item">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-light.png" alt="Logo">
-                            </div>
-                            <div class="item">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-light.png" alt="Logo">
-                            </div>
-                            <div class="item">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-light.png" alt="Logo">
-                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- End Bradn Area -->
+    <!-- End Bradn Area -->
+<?php endif; ?>
 
 <!-- Start Team Members 
     ============================================= -->
@@ -360,152 +356,106 @@ get_header();
         </div>
     </div> -->
 <!-- End Team Members -->
-
-<!-- Start Testimonial Area 
+<?php if (get_field('testimonials')) : ?>
+    <!-- Start Testimonial Area 
     ============================================= -->
-<div class="testimonial-style-one-area default-padding-top">
+    <div class="testimonial-style-one-area default-padding-top">
 
-    <div class="container">
-        <div class="heading-left">
+        <div class="container">
+            <div class="heading-left">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="content-left">
+                            <h4 class="sub-title">Testimonials</h4>
+                            <h2 class="title">What people say</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="content-left">
-                        <h4 class="sub-title">Testimonials</h4>
-                        <h2 class="title">What people say</h2>
+
+                <div class="testimonial-one-carousel-box">
+                    <div class="testimonial-style-one-carousel swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <?php
+
+                            // Check rows existexists.
+                            if (have_rows('testimonials')) :
+
+                                // Loop through rows.
+                                while (have_rows('testimonials')) : the_row();
+                            ?>
+                                    <!-- Single item -->
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-style-one">
+                                            <div class="provider">
+                                                <div class="thumb">
+                                                    <img src="<?php the_sub_field('image'); ?>" alt="Image Not Found">
+                                                    <div class="quote">
+                                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/quote-big.png" alt="Image Not Found">
+                                                    </div>
+                                                </div>
+                                                <div class="info">
+                                                    <h4><?php the_sub_field('name'); ?></h4>
+                                                    <span><?php the_sub_field('position'); ?></span>
+                                                </div>
+                                            </div>
+                                            <div class="content">
+                                                <?php
+                                                $rating = intval(get_sub_field('stars')); // Assuming 'stars' is a numeric field
+
+                                                // Ensure $rating is within the valid range (0 to 5)
+                                                $rating = max(0, min($rating, 5));
+
+                                                // Output star rating
+                                                echo '<div class="rating">';
+                                                for ($i = 1; $i <= 5; $i++) {
+                                                    if ($i <= $rating) {
+                                                        echo '<i class="fas fa-star"></i>';
+                                                    } else {
+                                                        echo '<i class="far fa-star"></i>'; // Use 'far' for empty star
+                                                    }
+                                                }
+                                                echo '</div>';
+                                                ?>
+
+                                                <p>
+                                                    <?php the_sub_field('description'); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single item -->
+                            <?php
+                                // End loop.
+                                endwhile;
+                            endif;
+                            ?>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
+                    <!-- Navigation -->
+                    <div class="testimonial-one-swiper-nav">
 
-            <div class="testimonial-one-carousel-box">
-                <div class="testimonial-style-one-carousel swiper">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        <!-- Single item -->
-                        <div class="swiper-slide">
-                            <div class="testimonial-style-one">
-                                <div class="provider">
-                                    <div class="thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/800x800.png" alt="Image Not Found">
-                                        <div class="quote">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/quote-big.png" alt="Image Not Found">
-                                        </div>
-                                    </div>
-                                    <div class="info">
-                                        <h4>Matthew J. Wyman</h4>
-                                        <span>Senior Consultant</span>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p>
-                                        Targeting consultation discover apartments. ndulgence off under folly death
-                                        wrote cause her way spite. Plan upon yet way get cold spot its week. Almost
-                                        do am or limits hearts. Resolve parties but why she shewing. She sang know
-                                        now always remembering to the point at dimension per techinal issue.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single item -->
-                        <!-- Single item -->
-                        <div class="swiper-slide">
-                            <div class="testimonial-style-one">
-                                <div class="provider">
-                                    <div class="thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/800x800.png" alt="Image Not Found">
-                                        <div class="quote">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/quote-big.png" alt="Image Not Found">
-                                        </div>
-                                    </div>
-                                    <div class="info">
-                                        <h4>Anthom Bu Spar</h4>
-                                        <span>Marketing Manager</span>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p>
-                                        Targeting consultation discover apartments. ndulgence off under folly death
-                                        wrote cause her way spite. Plan upon yet way get cold spot its week. Almost
-                                        do am or limits hearts. Resolve parties but why she shewing. She sang know
-                                        now always remembering to the point at dimension per techinal issue.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single item -->
-                        <!-- Single item -->
-                        <div class="swiper-slide">
-                            <div class="testimonial-style-one">
-                                <div class="provider">
-                                    <div class="thumb">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/800x800.png" alt="Image Not Found">
-                                        <div class="quote">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/quote-big.png" alt="Image Not Found">
-                                        </div>
-                                    </div>
-                                    <div class="info">
-                                        <h4>Metho k. Partho</h4>
-                                        <span>Senior Developer</span>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p>
-                                        Targeting consultation discover apartments. ndulgence off under folly death
-                                        wrote cause her way spite. Plan upon yet way get cold spot its week. Almost
-                                        do am or limits hearts. Resolve parties but why she shewing. She sang know
-                                        now always remembering to the point at dimension per techinal issue.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single item -->
+                        <!-- Pagination -->
+                        <div class="testimonial-one-pagination"></div>
+
+                        <div class="testimonial-one-button-prev"></div>
+                        <div class="testimonial-one-button-next"></div>
+
                     </div>
 
                 </div>
-
-                <!-- Navigation -->
-                <div class="testimonial-one-swiper-nav">
-
-                    <!-- Pagination -->
-                    <div class="testimonial-one-pagination"></div>
-
-                    <div class="testimonial-one-button-prev"></div>
-                    <div class="testimonial-one-button-next"></div>
-
-                </div>
-
             </div>
         </div>
+
     </div>
-
-</div>
-<!-- End Testimonial Area -->
-
+    <!-- End Testimonial Area -->
+<?php endif; ?>
 <!-- Start Prjoect 
     ============================================= -->
 <div class="project-style-one-area default-padding bg-gray">
@@ -573,7 +523,7 @@ get_header();
                                                 <a href="<?php the_permalink(); ?>"><i class="fas fa-arrow-right"></i></a>
                                             </div>
                                             <div class="content">
-                                                <span><?php the_category()?></span>
+                                                <span><?php the_category() ?></span>
                                                 <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
                                             </div>
                                         </div>

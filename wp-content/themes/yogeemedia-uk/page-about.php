@@ -135,84 +135,51 @@ get_header();
         </div>
 
         <div class="container">
-            <div class="row">
+        <div class="row">
 
+            <?php
+            // WP Query to fetch services
+            $args = array(
+                'post_type' => 'service', // Assuming 'services' is the name of your custom post type
+                'posts_per_page' => -1,    // Show all posts
+            );
+
+            $services_query = new WP_Query($args);
+
+            $counter = 1; // Initialize a counter for incrementing
+
+            // Loop through services
+            while ($services_query->have_posts()) :
+                $services_query->the_post();
+            ?>
                 <div class="col-md-4">
                     <!-- Single Item -->
                     <div class="cteative-service-item text-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/1.png" alt="Icon">
-                        <h4><a href="services-details.html">Digital Marketing</a></h4>
+                        <?php
+                        // Display service icon/image if available
+                        $service_icon_url = get_field('service_icon'); // Assuming 'service_icon' is the name of the custom field for the icon
+                        if ($service_icon_url) {
+                        ?>
+                            <img src="<?php echo esc_url($service_icon_url); ?>" alt="Icon">
+                        <?php
+                        }
+                        ?>
+                        <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
                         <p>
-                            Continued at up zealously necessary is regular breakfast. Surrounded motionless she end
-                            literature. Time is neglects supported yet melancho themselve. Biggest agencies. The user
-                            experience: the first mention of the user and its.
+                            <?php the_excerpt(); ?>
                         </p>
-                        <span>01</span>
+                        <span><?php echo str_pad($counter, 2, '0', STR_PAD_LEFT); ?></span>
                     </div>
                     <!-- End Single Item -->
                 </div>
-                <div class="col-md-4">
-                    <div class="cteative-service-item text-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/2.png" alt="Icon">
-                        <h4><a href="services-details.html">Growth Tracking</a></h4>
-                        <p>
-                            Continued at up zealously necessary is regular breakfast. Surrounded motionless she end
-                            literature. Time is neglects supported yet melancho themselve. Biggest agencies. The user
-                            experience: the first mention of the user and its.
-                        </p>
-                        <span>02</span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="cteative-service-item text-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/3.png" alt="Icon">
-                        <h4><a href="services-details.html">Product Branding</a></h4>
-                        <p>
-                            Continued at up zealously necessary is regular breakfast. Surrounded motionless she end
-                            literature. Time is neglects supported yet melancho themselve. Biggest agencies. The user
-                            experience: the first mention of the user and its.
-                        </p>
-                        <span>03</span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="cteative-service-item text-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/4.png" alt="Icon">
-                        <h4><a href="services-details.html">Enterprise Consulting</a></h4>
-                        <p>
-                            Continued at up zealously necessary is regular breakfast. Surrounded motionless she end
-                            literature. Time is neglects supported yet melancho themselve. Biggest agencies. The user
-                            experience: the first mention of the user and its.
-                        </p>
-                        <span>04</span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="cteative-service-item text-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/4.png" alt="Icon">
-                        <h4><a href="services-details.html">Enterprise Consulting</a></h4>
-                        <p>
-                            Continued at up zealously necessary is regular breakfast. Surrounded motionless she end
-                            literature. Time is neglects supported yet melancho themselve. Biggest agencies. The user
-                            experience: the first mention of the user and its.
-                        </p>
-                        <span>04</span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="cteative-service-item text-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/4.png" alt="Icon">
-                        <h4><a href="services-details.html">Enterprise Consulting</a></h4>
-                        <p>
-                            Continued at up zealously necessary is regular breakfast. Surrounded motionless she end
-                            literature. Time is neglects supported yet melancho themselve. Biggest agencies. The user
-                            experience: the first mention of the user and its.
-                        </p>
-                        <span>04</span>
-                    </div>
-                </div>
-            </div>
+            <?php
+                $counter++; // Increment the counter
+            endwhile;
+            wp_reset_postdata(); // Reset the query to the main loop
+            ?>
+
         </div>
+    </div>
     </div>
     <!-- End Services -->
 

@@ -9257,7 +9257,7 @@ ul.contact-address>li:first-child {
 }
 
 .brand-items .item img {
-	min-width: 300px;
+	width: 300px;
 }
 
 .btn-active {
